@@ -5,6 +5,7 @@ import express from 'express';
 import morgan from 'morgan'
 import cors from 'cors';
 import logger from './logger/logger.js';
+import authRoute from './routes/authRoute.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,16 +20,8 @@ app.use(morgan('combined', {
     }
 }));
 
-app.get('/', (req, res) => {
-    logger.info('Homepage diakses');
-    res.send(`Hai dari ${process.env.APP_NAME}`);
-});
-
-app.get('/error', (req, res) => {
-    logger.error('Error terjadi di /error');
-    res.status(500).send('Terjadi error');
-});
+app.use('/api/auth', authRoute);
 
 app.listen(PORT, () => {
-    logger.info(`Server is running on port ${APP_URL}`);
+    logger.info(`Server ${APP_NAME} is running on port ${APP_URL}`);
 });
