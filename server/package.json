@@ -7,6 +7,8 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "migrate": "npx prisma migrate dev",
+    "studio": "prisma studio",
+    "migrate-and-studio": "npm run migrate && npm run studio",
     "generate": "npx prisma generate",
     "seed": "npx prisma db seed"
   },
@@ -23,11 +25,13 @@
   "homepage": "https://github.com/ZeeKotomori/KlinikUtamaJasaMandiri#readme",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^6.6.0",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "prisma": "^6.6.0",
     "winston": "^3.17.0"
